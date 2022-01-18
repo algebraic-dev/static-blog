@@ -2,6 +2,7 @@
   "extends": "next",
   "rules": {
     "semi": [2, "never"],
-    "quotes": ["error", "single"]
+    "quotes": ["error", "single"],
+    "no-console": ["error"]
   }
 }

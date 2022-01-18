@@ -15,7 +15,8 @@ jobs:
         run: |
           yarn install
           yarn build
-      - name: Deploy
-        run: yarn deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_REPO_TOKEN }}
+       - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out

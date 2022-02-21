@@ -56,7 +56,7 @@ const Post = (props: PostProps) => {
             shortname='chiyoku-blog'
             config={
                 {
-                    url: 'https://chiyoku-blog.disqus.com/posts/' + props.name,
+                    url: 'https://felipegchi.github.io/posts/' + props.name,
                     identifier: props.name,
                     title: props.title,
                     language: 'en_US'	

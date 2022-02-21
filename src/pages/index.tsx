@@ -47,7 +47,7 @@ const Home = (data: HomeProps) => (
 export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
-      posts: posts.map((post) => ({
+      posts: posts.sort((a,b) => b.data.date - a.data.date).map((post) => ({
         title: post.data.title,
         link: post.data.loc,
         desc: post.data.desc || '',

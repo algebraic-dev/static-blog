@@ -5,6 +5,7 @@ import Navbar from 'components/Navbar'
 
 import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
+import { DiscussionEmbed } from 'disqus-react'
 
 import posts from 'lib/posts'
 import { H1, H2, H3, Img, A, P, Li } from 'components/Markdown'
@@ -15,6 +16,8 @@ interface PostProps {
   title: string
   desc: string
   date: string
+  name: string
+  id: number
   source: MDXRemoteSerializeResult
 }
 
@@ -46,9 +49,20 @@ const Post = (props: PostProps) => {
           <p className="dark:text-zinc-300 text-zinc-700 mt-10">{props.desc}</p>
         </section>
         <hr />
-        <article className="mt-10">
+        <article className="my-10">
           <MDXRemote {...props.source} components={components} />
         </article>
+        <DiscussionEmbed
+            shortname='chiyoku-blog'
+            config={
+                {
+                    url: 'https://chiyoku-blog.disqus.com/posts/' + props.name,
+                    identifier: props.name,
+                    title: props.title,
+                    language: 'en_US'	
+                }
+            }
+        />
         <Footer />
       </Container>
     </div>
@@ -56,8 +70,10 @@ const Post = (props: PostProps) => {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  let id = context?.params?.id || ''
-  let post = posts.find((a) => a.name == id)
+  let name = context?.params?.id || ''
+  let idx = posts.findIndex((a) => a.name == name)
+
+  let post = posts[idx]
 
   if (post === undefined) return { props: {} }
 
@@ -67,6 +83,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
       desc: post.data.desc || '',
       date: post.data.date.toString(),
       source: await serialize(post.content),
+      name,
+      id: idx
     },
   }
 }

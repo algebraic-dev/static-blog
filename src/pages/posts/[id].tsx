@@ -46,7 +46,6 @@ const Post = (props: PostProps) => {
           <h1 className="font-bold dark:text-white text-4xl mb-5 tracking-wider">
             {props.title}
           </h1>
-          <p className="dark:text-zinc-300 text-zinc-700 mt-10">{props.desc}</p>
         </section>
         <hr />
         <article className="my-10">

@@ -6,7 +6,7 @@ const basePath = './src/posts/'
 const readPost = (file: string) =>
   fs.readFileSync(`${basePath}${file}`).toString('utf-8')
 
-let posts = fs.readdirSync('./src/posts').map((file) => {
+const toPost = (file: string) => {
   let result = matter(readPost(file))
   let [year, month, day] = file.split('-')
 
@@ -17,7 +17,10 @@ let posts = fs.readdirSync('./src/posts').map((file) => {
     name: file.replace('.mdx', ''),
     data: result.data,
     content: result.content,
+    hidden: result.data.hidden || false 
   }
-})
+}
+
+let posts = fs.readdirSync('./src/posts').map(toPost).filter(post => !post.hidden)
 
 export default posts

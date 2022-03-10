@@ -13,7 +13,7 @@ export const H3 = ({ children }: { children: ReactNode }) => (
 )
 
 export const P = ({ children }: { children: ReactNode }) => (
-  <p className="dark:text-white text-zinc-700">{children}</p>
+  <p className="dark:text-zinc-300 text-zinc-700 text-lg">{children}</p>
 )
 
 export const Li = ({ children }: { children: ReactNode }) => (

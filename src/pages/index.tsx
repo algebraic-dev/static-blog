@@ -23,7 +23,7 @@ const Home = (data: HomeProps) => (
     <Container>
       <section className="text-center mt-20 my-10">
         <h1 className="font-bold text-7xl mb-5 tracking-wider dark:text-white">
-          FELIPE G
+          CHIYOKU ☄️
         </h1>
         <p className="dark:text-zinc-300">I write about everything i learn.</p>
       </section>
@@ -47,7 +47,7 @@ const Home = (data: HomeProps) => (
 export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
-      posts: posts.sort((a,b) => b.data.date - a.data.date).map((post) => ({
+      posts: posts.sort((a, b) => b.data.date - a.data.date).map((post) => ({
         title: post.data.title,
         link: post.data.loc,
         desc: post.data.desc || '',

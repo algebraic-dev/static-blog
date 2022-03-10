@@ -11,7 +11,7 @@ const Post = (props: PostProps) => (
   <article className="my-10">
     <Link passHref={true} href={props.href}>
       <header className="flex justify-between cursor-pointer">
-        <h1 className="font-bold text-lg dark:text-white">{props.title}</h1>
+        <h1 className="font-bold text-xl dark:text-white">{props.title}</h1>
         <h1 className="text-zinc-400 dark:text-white">
           {props.date.toDateString()}
         </h1>

@@ -6,13 +6,15 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  line-height: 1.6;
+  word-break: break-word;
+  font-family: Cantarell;
   transition: background 0.2s ease;
   min-height: 100%;
 }
 
 html.dark {
-  background: rgb(19, 19, 19);
+  background: #0f0f10;
 }
 
 a {

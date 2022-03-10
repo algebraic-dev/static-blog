@@ -47,21 +47,10 @@ const Post = (props: PostProps) => {
             {props.title}
           </h1>
         </section>
-        <hr />
         <article className="my-10">
           <MDXRemote {...props.source} components={components} />
         </article>
-        <DiscussionEmbed
-            shortname='chiyoku-blog'
-            config={
-                {
-                    url: 'https://felipegchi.github.io/posts/' + props.name,
-                    identifier: props.name,
-                    title: props.title,
-                    language: 'en_US'	
-                }
-            }
-        />
+
         <Footer />
       </Container>
     </div>

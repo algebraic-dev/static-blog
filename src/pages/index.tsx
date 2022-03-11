@@ -27,7 +27,7 @@ const Home = (data: HomeProps) => (
         </h1>
         <p className="dark:text-zinc-300">I write about everything i learn.</p>
       </section>
-      <hr />
+      <hr className='dark:border-zinc-900' />
       <section>
         {data.posts.map((post) => (
           <Post

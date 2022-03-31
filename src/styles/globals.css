@@ -8,7 +8,7 @@ body {
   margin: 0;
   line-height: 1.6;
   word-break: break-word;
-  font-family: -apple-system,BlinkMacSystemFont,segoe ui,Roboto,Oxygen,Ubuntu,Cantarell,open sans,helvetica neue,sans-serif;
+  font-family: -apple-system,Cantarell,BlinkMacSystemFont,segoe ui,Roboto,Oxygen,Ubuntu,open sans,helvetica neue,sans-serif;
   transition: background 0.2s ease;
   min-height: 100%;
 }
@@ -25,7 +25,6 @@ a {
 * {
   box-sizing: border-box;
   transition: color 0.2s ease;
-  font-family: Cantarell;
 }
 
 :root {

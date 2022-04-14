@@ -1,0 +1,109 @@
+---
+title: How I improved my coding skills
+desc: I'm trying to improve my writing skills with this post that introduces some cool stuff from the Haskell programming language!   
+---
+
+Learning a new language is something that takes a lot of time but it can really help you with thinking 
+about the problems that other technologies solve and how to improve your own code with another style. 
+This article will focus on the programming language called Haskell but there are a lot of programming 
+languages that can improve your code abilities and your sense of bad code.
+
+I started learning functional programming in the beginning of 2019 using Elixir and ReasonML but when 
+I started to learn the Haskell programming language I had a cool but hard time trying to understand and 
+learning it's purpose (because it looks really hard and not focus on the mainstream things like Web Dev) and, 
+because of a lot of frustration, in the end I had to read this incredible but large book called "Haskell from 
+first principles" to understand how beautiful is Haskell.
+
+# What is Haskell?
+
+Haskell is a programming language that is lazy evaluated, functional, so it relies on composing and applying 
+functions instead of using classes and objects as in object oriented paradigm, and pure so all 
+the functions in Haskell returns the same output if you put the same value.
+
+If you think about the term "pure" for a while, you will realize that we probably 
+cannot read files, get HTTP requests or even print to the screen because these 
+functions can return different values for the same input. Haskell solves it in a abstract 
+and odd way by internally creating a new world (as a unique symbol) that will represent the change of the real 
+world in each operation inside the IO monad, so to see the program outputting two different values at the same
+input inside the IO monad, you will have to create a time machine!
+
+# The Hello World
+
+![Hello world](https://i.imgur.com/KRiRvST.png)
+
+Looks simple right? As a typed programming language we have to specify the type of the expression using "::" and the 
+value of the expression is specified after the equal sign. In this simple example, we define that main is a value of 
+type IO () where the empty parenthesis is the same as a type with one single value, so it's just a placeholder value 
+that means that it not contains anything useful at all. The IO that is before the empty parenthesis is the IO monad that
+I mentioned in the last paragraph so it specifies that the function will 'create' side effects. The putStrLn function 
+will simply print the String to the screen returning an IO effect.
+
+# Pure and impure functions
+
+Sometimes you just have to be obvious in what your function/method does, people don't want to get some error related to the network connection when 
+they're simply comparing if two URLs are equal in a function call like the one below. 
+
+```java
+url1.equals(url2)
+```
+
+It's actually something that happens in the Log4j library for Java. When you use a HashMap data structure, it resolves host names to the same
+IP to compare them so it does something more than just putting inside a HashMap data structure it actually makes a network call.
+
+![Two functions to print](https://i.imgur.com/Gppm9rw.png)
+
+In Haskell we cannot make something like that without specifying something like IO, the first function will make a pure sum of two numbers
+
+In this piece of code, we specify that addPrint will generate a side effect so it returns an IO Int that is different from a simple Int, and 
+IO Int not allow us to get out of the IO anymore. We can extract the Int from the IO but in the end we will have to create another IO with 
+another value that will or not use this value from before. In the line at the end of this code, the function wraps (a+b) inside the IO Monad 
+using pure. So if I use addPrint in a 'pure' function, it will contaminate this function with IO and the others that use it too. 
+
+This "contamination" is really useful when we have to separate code that should be deterministic from the ones that can fail and with it we
+guarantee (although having unsafePerformIO) that it will behave as we want.
+
+# A simple RPG in Haskell
+
+In Haskell we can easily create new types and they're really useful to describe every aspect of our code. If we want to describe 
+an RPG with things like classes, items and players we can describe them in this way:
+
+![RPG Data types](https://i.imgur.com/wstUnpN.png)
+
+So now we have something a little more complex, ItemKind is a type that the constructors are Staff or Sword just like an enum from Java or C. 
+Item is like a record or a struct and User is these two concepts together with. In the end we can have a new User called "Ainz Ooal Gown" that 
+is a Mage (constructor of the type User) with an Item that is a Staff.
+
+Obviously we can make it a little more "complex" using some other concepts that are a little more complex using some cool Haskell
+extensions (KindSignatures and DataKinds) like:
+
+![RPG Data types](https://i.imgur.com/wstUnpN.png)
+
+So now, the Item carries the Kind (the type of a type) of the item and we will get an error in the last line that a Mage should use a Staff and not a Sword.
+
+![Error message](https://i.imgur.com/hZ89bUD.png)
+
+And after removing this user called Ainz, we can join it with some code that interacts with the real world like this:
+
+![Impure](https://i.imgur.com/bfwUwdC.png)
+
+Superficially, we create two items (An Item Staff called staff and an Item Sword called sword) and a cool function called attack that will 
+pattern match on the User to check if it's a Swordsman or a Mage (like destructuring in Javascript) and then print a cool and type safe phrase.
+
+# Besides that, why should I learn these odd technologies?
+
+The recent 3.10 version of Python introduced "structural matching" that is exactly the same thing as the pattern matching that Haskell has and it's 
+mentioned in Simon Peyton Jones book "The implementation of functional programming languages" published in 1987. From that, we can see that some 
+cool features are slowly becoming more popular like with pattern matching, the immutability by default from Rust and even cool libraries like 
+Arrow KT for Kotlin are getting a great leverage. There are a lot of old and odd programming languages features that slowly got implemented on 
+mainstream languages or just turned into mainstream languages because they matter. 
+
+# Conclusion
+
+It's just an introduction to a cool language and why you should learn about them. No matter what language you learn, you always will have to learn 
+some other ways to deal with problems (because programming language designers want to be authentic). If you want to learn more about Haskell I 
+recommend:
+
+- Haskell Programming from First Principles
+- Learn You a Haskell for Great Good!
+
+There are a lot of other sources like the "Haskell for imperative programmers" playlist in YouTube.

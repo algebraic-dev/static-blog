@@ -17,7 +17,7 @@ export const P = ({ children }: { children: ReactNode }) => (
 )
 
 export const Li = ({ children }: { children: ReactNode }) => (
-  <li className="dark:text-white text-zinc-700 list-disc">{children}</li>
+  <li className="dark:text-zinc-300 text-zinc-700 text-lg my-2 list-inside list-disc">{children}</li>
 )
 
 export const Img = (data: { src: string; alt: string }) => (

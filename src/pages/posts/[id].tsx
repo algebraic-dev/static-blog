@@ -43,7 +43,7 @@ const Post = (props: PostProps) => {
       <Navbar />
       <Container>
         <section className="text-center mt-20 my-10">
-          <h1 className="font-bold dark:text-white text-4xl mb-5 tracking-wider">
+          <h1 className="font-bold dark:text-white text-5xl my-24 tracking-wider">
             {props.title}
           </h1>
         </section>

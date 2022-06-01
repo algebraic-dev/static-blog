@@ -22,7 +22,7 @@ const Home = (data: HomeProps) => (
     <Navbar />
     <Container>
       <section className="text-center mt-20 my-10">
-        <h1 className="font-bold text-7xl mb-5 tracking-wider dark:text-white">
+        <h1 className="font-bold text-6xl  mb-5 tracking-wider dark:text-white">
           CHIYOKU ☄️
         </h1>
         <p className="dark:text-zinc-300">I write about everything i learn.</p>
